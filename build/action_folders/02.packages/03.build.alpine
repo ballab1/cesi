@@ -1,0 +1,4 @@
+# build Packages
+
+declare -a PKGS=( python
+                  sqlite )
