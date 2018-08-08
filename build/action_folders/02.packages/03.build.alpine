@@ -1,4 +1,5 @@
 # build Packages
 
-declare -a PKGS=( python
+declare -a PKGS=( py2-pip
+                  python
                   sqlite )

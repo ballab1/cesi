@@ -1,14 +1,11 @@
 # Gradle
 
-declare -A GRADLE=()
-
-GRADLE['version']=${GRADLE_VERSION:?}
-GRADLE['file']="/tmp/gradle-${GRADLE['version']}-bin.zip"
-GRADLE['url']="https://services.gradle.org/distributions/gradle-${GRADLE['version']}-bin.zip"
-GRADLE['sha256_4.4.1']="e7cf7d1853dfc30c1c44f571d3919eeeedef002823b66b6a988d27e919686389"
-GRADLE['sha256_4.9']="e66e69dce8173dd2004b39ba93586a184628bc6c28461bc771d6835f7f9b0d28"
-GRADLE['sha256']="${GRADLE['sha256_'${GRADLE['version']}]}"
-GRADLE['home']="${GRADLE_HOME:-/home/gradle}"
-
-#directories
-export GRADLE_HOME="${GRADLE['home']}"
+declare -A CESI=(
+    ['version']=${CESI_VERSION:?}
+    ['dir']="/tmp/cesi-${CESI['version']}"
+    ['file']="/tmp/cesi-${CESI['version']}-tar.gz"
+    ['url']="https://github.com/gamegos/cesi/archive/v${CESI['version']}.tar.gz"
+    ['sha256_2_api']="2e86025a469a71171c266087b88d8f43a9c5497c0f2aa596bc5648ee3ebe4f37"
+    ['sha256']="${CESI['sha256_'${CESI['version']}]}"
+    ['home']="${CESI_HOME:-/usr/local/cesi}"
+)

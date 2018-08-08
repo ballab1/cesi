@@ -1,4 +1,4 @@
-ARG FROM_BASE=alpine:3.8
+ARG FROM_BASE=${DOCKER_REGISTRY:-}base_container:${BASE_TAG:-latest} 
 FROM $FROM_BASE
 
 # name and version of this docker image
@@ -13,6 +13,7 @@ COPY build Dockerfile /tmp/
 #    (0:default, 1:trace & do not cleanup; 2:continue after errors)
 ENV DEBUG_TRACE=0
 
+ARG CESI_VERSION=${CESI_VERSION:-2_api}
 
 # build content
 RUN set -o verbose \
@@ -20,6 +21,7 @@ RUN set -o verbose \
     && /tmp/build.sh "$CONTAINER_NAME" "$DEBUG_TRACE"
 RUN [ $DEBUG_TRACE != 0 ] || rm -rf /tmp/*
 
+EXPOSE 5000
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 #CMD ["$CONTAINER_NAME"]
