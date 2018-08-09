@@ -6,8 +6,9 @@ services:
             args:
                 CBF_VERSION: "${CBF_VERSION}"
                 CONTAINER_NAME: cesi
-                FROM_BASE: ${DOCKER_REGISTRY:-}base_container:${BASE_TAG:-latest} 
+                FROM_BASE: ${DOCKER_REGISTRY:-}supervisord:${BASE_TAG:-latest} 
             cache_from:
+                - ${DOCKER_REGISTRY:-}supervisord:${BASE_TAG:-latest} 
                 - ${DOCKER_REGISTRY:-}base_container:${BASE_TAG:-latest}
             context: .
             dockerfile: Dockerfile
