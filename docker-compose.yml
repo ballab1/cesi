@@ -19,11 +19,11 @@ services:
                 container.git.url: $CONTAINER_GIT_URL
                 container.origin: $CONTAINER_ORIGIN
                 container.original.name: cesi
-        container_name: cesi
+        container_name: supervisorm
         environment:
             DEBUG_TRACE: ${DEBUG_TRACE:-0}
         hostname: cesi
-        image: ${DOCKER_REGISTRY:-}cesi:${CONTAINER_TAG:-latest}
+        image: ${DOCKER_REGISTRY:-}cesi/2_api:${CONTAINER_TAG:-latest}
         logging:
             driver: json-file
             options:
