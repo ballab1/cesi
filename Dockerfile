@@ -4,7 +4,7 @@ FROM $FROM_BASE
 # name and version of this docker image
 ARG CONTAINER_NAME=cesi
 # Specify CBF version to use with our configuration and customizations
-ARG CBF_VERSION="${CBF_VERSION}"
+ARG CBF_VERSION
 
 # include our project files
 COPY build Dockerfile /tmp/
@@ -13,7 +13,7 @@ COPY build Dockerfile /tmp/
 #    (0:default, 1:trace & do not cleanup; 2:continue after errors)
 ENV DEBUG_TRACE=0
 
-ARG CESI_VERSION=${CESI_VERSION:-2_api}
+ARG CESI_VERSION=2_api
 
 # build content
 RUN set -o verbose \
