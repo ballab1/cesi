@@ -1,0 +1,9 @@
+#!/bin/bash
+
+declare cesi_userinfo_file="${CESI['home']}/userinfo.db"
+declare cfgFile=/etc/cesi.conf
+
+sed -i -e "s|^\s*database\s*=.+$|database = $cesi_userinfo_file|" \
+       -e "s|^\s*host\s*=.+$|host = $HOSTNAME|" \
+       -e "s|^\s*username\s*=.+$|username = $SUPERVISORD_USER|g" \
+       -e "s|^\s*password\s*=.+$|password = $SUPERVISORD_PASS|g" "$cfgFile"

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-export CESI_USERINFO_FILE="${CESI['home']}/userinfo.db"
-
-sed -i "s|^\s*database\s*=.+$|database = $CESI_USERINFO_FILE|" /etc/cesi.conf
