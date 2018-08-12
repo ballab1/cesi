@@ -2,12 +2,8 @@
 
 pip install -r /tmp/requirements.txt
 
-mkdir -p "${CESI['home']}"
+mkdir -p "${CESI_HOME}"
 tar -xvf "${CESI['file']}"
 
-cd "${CESI['home']}"
+cd "${CESI_HOME}"
 mv "${CESI['dir']}"/* .
-
-export CESI_USERINFO_FILE="${CESI['home']}/userinfo.db"
-touch "$CESI_USERINFO_FILE"
-sqlite3 "$CESI_USERINFO_FILE" < userinfo.sql

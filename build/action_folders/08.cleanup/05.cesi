@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd "$CESI_HOME"
+
+declare -a files=(CONTRIBUTORS.md
+                  Dockerfile
+                  LICENCE
+                  MANIFEST.in
+                  README.md
+                  cesi.conf.sample
+                  docs
+                 )
+
+for file in "${files[*]}"; do
+    rm -rf "$file"
+done
