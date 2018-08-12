@@ -7,15 +7,14 @@ cd "${CESI_HOME}"
 declare cesi_userinfo_db="${CESI_HOME}/userinfo.db"
 declare cfgFile=/etc/cesi.conf
 
-sed -i -e "s|^\s*database\s*=.+$|database = $cesi_userinfo_db|" \
-       -e "s|^\s*host\s*=.+$|host = $HOSTNAME|" \
-       -e "s|^\s*username\s*=.+$|username = $SUPERVISORD_USER|g" \
-       -e "s|^\s*password\s*=.+$|password = $SUPERVISORD_PASS|g" "$cfgFile"
+sed -i -eE "s|^\s*database\s*=.+$|database = $cesi_userinfo_db|" \
+       -eE "s|^\s*host\s*=\s* localhost.*$|host = $HOSTNAME|" \
+       -eE "s|^\s*username\s*=.+$|username = $SUPERVISORD_USER|g" \
+       -eE "s|^\s*password\s*=.+$|password = $SUPERVISORD_PASS|g" "$cfgFile"
 
 declare cesi_userinfo_sql="${CESI_HOME}/userinfo.sql"
 
-sed -i -e "s|^\s*insert into userinfo values.*$;.+$|insert into userinfo values('${SUPERVISORD_USER}', '${SUPERVISORD_PASS}', 0); |"  "$cesi_userinfo_sql"
-insert into userinfo values('admin', 'admin', 0); 
+sed -i -eE "s|^\s*insert into userinfo values.*$|insert into userinfo values('${SUPERVISORD_USER}', '${SUPERVISORD_PASS}', 0);|"  "$cesi_userinfo_sql"
 
 touch "$cesi_userinfo_db"
 sqlite3 "$cesi_userinfo_db" < "$cesi_userinfo_sql"
