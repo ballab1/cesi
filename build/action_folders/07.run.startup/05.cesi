@@ -5,12 +5,14 @@ cd "${CESI_HOME}"
 
 
 declare cesi_userinfo_db="${CESI_HOME}/userinfo.db"
-declare cfgFile=/etc/cesi.conf
+declare cfgFile="${CESI_HOME}/cesi.conf"
 
 sed -Ei -e "s|^\s*database\s*=.+$|database = $cesi_userinfo_db|" \
         -e "s|^\s*host\s*=\s* localhost.*$|host = $HOSTNAME|" \
         -e "s|^\s*username\s*=.+$|username = $SUPERVISORD_USER|g" \
         -e "s|^\s*password\s*=.+$|password = $SUPERVISORD_PASS|g" "$cfgFile"
+
+ln -s "$cfgFile" /etc/cesi.conf
 
 declare cesi_userinfo_sql="${CESI_HOME}/userinfo.sql"
 
