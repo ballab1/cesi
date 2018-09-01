@@ -1,6 +1,8 @@
 #!/bin/bash
 
-
+[ "${SUPERVISORD_PASS:-}" ] || lib.file_env 'SUPERVISORD_PASS'
+: ${SUPERVISORD_PASS:?"Environment variable 'SUPERVISORD_PASS' not defined in '${BASH_SOURCE[0]}'"} 
+    
 cd "${CESI_HOME}"
 
 

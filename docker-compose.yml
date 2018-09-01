@@ -24,7 +24,7 @@ services:
         container_name: supervisorm
         environment:
             DEBUG_TRACE: ${DEBUG_TRACE:-0}
-            SUPERVISORD_PASS: $CFG_PASS
+            SUPERVISORD_PASS_FILE: /run/secrets/supervisord.pwd
             SUPERVISORD_USER: $CFG_USER
         hostname: supervisorm
         image: ${DOCKER_REGISTRY:-}${OS:-}cesi/2_api:${CONTAINER_TAG:-latest}
@@ -37,5 +37,11 @@ services:
             - 8008:5000
             - 9008:9001
 #        restart: unless-stopped
+        secrets:
+            - supervisord.pwd
         volumes:
             - ./vols/log:/var/log
+
+secrets:
+   supervisord.pwd:
+     file: ~/.inf/secrets/bobb.password
