@@ -5,6 +5,7 @@ services:
         build:
             args:
                 CBF_VERSION: "${CBF_VERSION}"
+                CESI_VERSION: ${CESI_VERSION:-2_api}
                 CONTAINER_NAME: cesi
                 FROM_BASE: ${DOCKER_REGISTRY:-}${OS:-}supervisord:${BASE_TAG:-latest} 
             cache_from:
@@ -27,7 +28,7 @@ services:
             SUPERVISORD_PASS_FILE: /run/secrets/supervisord.pwd
             SUPERVISORD_USER: $CFG_USER
         hostname: supervisorm
-        image: ${DOCKER_REGISTRY:-}${OS:-}cesi/2_api:${CONTAINER_TAG:-latest}
+        image: ${DOCKER_REGISTRY:-}${OS:-}cesi/${CESI_VERSION:-2_api}:${CONTAINER_TAG:-latest}
         logging:
             driver: json-file
             options:

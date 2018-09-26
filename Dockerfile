@@ -14,6 +14,7 @@ COPY build Dockerfile /tmp/
 ENV DEBUG_TRACE=0
 
 ARG CESI_VERSION=2_api
+LABEL cesi.version=$CESI_VERSION
 
 # build content
 RUN set -o verbose \
