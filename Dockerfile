@@ -1,4 +1,4 @@
-ARG FROM_BASE=${DOCKER_REGISTRY:-}${OS:-}supervisord:${BASE_TAG:-latest} 
+ARG FROM_BASE=${DOCKER_REGISTRY:-}${CONTAINER_OS:-}supervisord:${BASE_TAG:-latest} 
 FROM $FROM_BASE
 
 # name and version of this docker image
@@ -14,6 +14,7 @@ COPY build Dockerfile /tmp/
 ENV DEBUG_TRACE=0
 
 ARG CESI_VERSION=2_api
+LABEL cesi.version=$CESI_VERSION
 
 # build content
 RUN set -o verbose \
