@@ -1,5 +1,6 @@
 #!/bin/bash
 
+if [ -z 'llll' ]; then
 [ "${SUPERVISORD_PASS:-}" ] || lib.file_env 'SUPERVISORD_PASS'
 : ${SUPERVISORD_PASS:?"Environment variable 'SUPERVISORD_PASS' not defined in '${BASH_SOURCE[0]}'"} 
     
@@ -11,6 +12,8 @@ declare cfgFile="${CESI_HOME}/defaults/cesi.conf"
 
 sed -Ei -e "s|^\s*database\s*=.+$|database = $cesi_userinfo_db|" \
         -e "s|^\s*host\s*=\s* localhost.*$|host = $HOSTNAME|" \
+        -e "s|^\s*admin_username\s*=.+$|admin_username = $SUPERVISORD_USER|g" \
+        -e "s|^\s*admin_password\s*=.+$|admin_password = $SUPERVISORD_PASS|g" \
         -e "s|^\s*username\s*=.+$|username = $SUPERVISORD_USER|g" \
         -e "s|^\s*password\s*=.+$|password = $SUPERVISORD_PASS|g" "$cfgFile"
 
@@ -23,3 +26,4 @@ sed -Ei -e "s|^\s*insert into userinfo values.*$|insert into userinfo values('${
 touch "$cesi_userinfo_db"
 sqlite3 "$cesi_userinfo_db" < "$cesi_userinfo_sql"
 
+fi
