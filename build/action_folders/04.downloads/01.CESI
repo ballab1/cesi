@@ -10,6 +10,8 @@ declare -A CESI=(
     ['sha256_2.0']="a3d35182848b9f79b6a2092f8bda8360503a59676296ed2cdfd1216c14fce564"
     ['sha256_2.1']="95393f3ff616b19c229544aab7d8012a319a932928b57a581cff9ec1c2f74945"
     ['sha256_2.2']="2e6f0e2f4426105a057bee16172b66ebed3d06bffc03dc56afc89400832ee74a"
+    ['sha256_2.3']="0592a8b3d214f90ad533b98d15d6b8c643d0ef7cb57356d8daf8263db91cfce4"
+    ['sha256_2.4']="12854e69ce467ada08bde52874abd2df3c28b6cfd8adc30019f4d6baef215cd9"
     ['sha256']="${CESI['sha256_'${CESI['version']}]}"
     ['home']="${CESI_HOME:-/usr/local/cesi}"
 )
