@@ -2,9 +2,12 @@
 
 declare -A CESI=(
     ['version']=${CESI_VERSION:?}
-    ['dir']="/tmp/cesi-${CESI['version']}"
+#    ['dir']="/tmp/cesi-${CESI['version']}"
+#    ['url']="https://github.com/gamegos/cesi/releases/download/v${CESI['version']}/cesi.tar.gz"
+#    ['sha256_2_api']="2e86025a469a71171c266087b88d8f43a9c5497c0f2aa596bc5648ee3ebe4f37"
+    ['dir']="/tmp/cesi"
     ['file']="/tmp/cesi-${CESI['version']}-tar.gz"
-    ['url']="https://github.com/gamegos/cesi/archive/v${CESI['version']}.tar.gz"
+    ['url']="https://github.com/gamegos/cesi/releases/download/v${CESI['version']}/cesi.tar.gz"
     ['sha256_1.0']="433d46e09c9e1326d9a1befb7e6f146a93ddb2ba8b554c895c591f7089fd1201"
     ['sha256_1.5']="ba61dcf908528b59580eeb5296d0ee3a9a6f87b95638a9cbc7e2735b0fb81744"
     ['sha256_2.0']="a3d35182848b9f79b6a2092f8bda8360503a59676296ed2cdfd1216c14fce564"

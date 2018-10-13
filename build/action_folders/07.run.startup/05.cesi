@@ -7,7 +7,7 @@ cd "${CESI_HOME}"
 
 
 declare cesi_userinfo_db="${CESI_HOME}/userinfo.db"
-declare cfgFile="${CESI_HOME}/cesi.conf"
+declare cfgFile="${CESI_HOME}/defaults/cesi.conf"
 
 sed -Ei -e "s|^\s*database\s*=.+$|database = $cesi_userinfo_db|" \
         -e "s|^\s*host\s*=\s* localhost.*$|host = $HOSTNAME|" \
