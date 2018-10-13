@@ -1,15 +1,17 @@
 #!/bin/bash
 
-declare cesi_web="${CESI_HOME}/cesi/web.py"
+declare cesi_web="${CESI_HOME}/cesi/run.py"
 
-cd "${CESI_HOME}"
 term.log "    updating '$cesi_web' with 'FlaskReverseProxied'\n" 'white'
+chmod 755 "${CESI_HOME}/cesi.sh"
 
-sed  -i -e '/from datetime import datetime/ a\
+sed  -i -e '/from loggers import ActivityLog/ a\
 from flask_reverse_proxy import FlaskReverseProxied 
 ' -e '
-/app = Flask(__name__)/ a\
-proxied = FlaskReverseProxied(app)
+/@app.before_request/ i\
+proxied = FlaskReverseProxied()
+proxied.init_app(app)
+
 ' "$cesi_web"
 
 echo
