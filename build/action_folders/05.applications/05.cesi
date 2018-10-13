@@ -1,9 +1,12 @@
 #!/bin/bash
 
-pip install -r /tmp/requirements.txt
-
 mkdir -p "${CESI_HOME}"
 tar -xvf "${CESI['file']}"
 
 cd "${CESI_HOME}"
 mv "${CESI['dir']}"/* .
+
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r /tmp/requirements.txt
+

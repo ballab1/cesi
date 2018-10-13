@@ -1,0 +1,6 @@
+# build Packages
+
+declare -a PKGS=( epel-release
+                  python34
+                  python34-pip
+                  sqlite )
