@@ -1,0 +1,4 @@
+upstream uwsgi {
+    # Upstream to abstract back-end connection(s) for uwsgi
+    server unix:/run/uwsgi.sock;
+} 

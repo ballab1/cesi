@@ -1,10 +1,10 @@
-ARG FROM_BASE=alpine:3.8
+ARG FROM_BASE=${DOCKER_REGISTRY:-ubuntu-s2:5000/}${CONTAINER_OS:-alpine}/nginx-base/${NGINX_VERSION:-1.14.2}${BASE_TAG:-latest} 
 FROM $FROM_BASE
 
 # name and version of this docker image
 ARG CONTAINER_NAME=cesi
 # Specify CBF version to use with our configuration and customizations
-ARG CBF_VERSION="${CBF_VERSION}"
+ARG CBF_VERSION
 
 # include our project files
 COPY build Dockerfile /tmp/
@@ -13,6 +13,8 @@ COPY build Dockerfile /tmp/
 #    (0:default, 1:trace & do not cleanup; 2:continue after errors)
 ENV DEBUG_TRACE=0
 
+ARG CESI_VERSION=2_api
+LABEL version.cesi=$CESI_VERSION
 
 # build content
 RUN set -o verbose \
@@ -20,6 +22,7 @@ RUN set -o verbose \
     && /tmp/build.sh "$CONTAINER_NAME" "$DEBUG_TRACE"
 RUN [ $DEBUG_TRACE != 0 ] || rm -rf /tmp/*
 
+EXPOSE 5000
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 #CMD ["$CONTAINER_NAME"]

@@ -1,0 +1,45 @@
+#!/bin/bash
+
+
+mkdir -p "${CESI_HOME}"
+cd "${CESI_HOME}"
+tar -xvf "${CESI['file']}"
+
+
+# Create virtual environment and install requirement packages
+set +u
+python3 -m venv venv
+source venv/bin/activate
+
+pip install --upgrade pip
+
+cat << EOF > requirements.txt
+Flask==1.0.2
+cffi==1.11.5
+SQLAlchemy==1.2.17
+Flask_SQLAlchemy==2.3.2
+tomlkit==0.5.3
+PyMySQL==0.9.2
+itsdangerous==1.1.0
+Click==7.0
+Werkzeug==0.14.1
+Jinja2==2.10
+pycparser==2.19
+cryptography==2.5
+EOF
+#jquery==1.2.3
+
+pip install -r requirements.txt
+deactivate
+set -u
+
+# Build ui (First you must install dependencies for ui -> yarn) - Optional
+cd ${CESI_HOME}/cesi/ui
+yarn install
+yarn build
+
+# Create cesi.conf.toml file and update cesi.conf.toml for your environment.
+# Config file documentation can be found inside default file.
+# (You must create cesi.conf in the etc directory for cesi.service)
+[ ! -e ${CESI_HOME}/defaults/cesi.conf.toml ] || cp ${CESI_HOME}/defaults/cesi.conf.toml /etc/cesi.conf.toml
+

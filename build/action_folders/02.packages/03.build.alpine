@@ -1,4 +1,13 @@
 # build Packages
 
-declare -a PKGS=( python
-                  sqlite )
+declare -a PKGS=( gcc 
+                  make
+                  libpq
+                  libffi-dev 
+                  linux-headers
+#                  openssl-dev
+                  python3
+                  python3-dev 
+                  sqlite
+#                  uwsgi
+                  yarn )

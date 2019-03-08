@@ -1,0 +1,13 @@
+# build Packages
+
+declare -a PKGS=( epel-release
+                  gcc 
+                  libffi-devel 
+                  openssl-devel
+                  python-devel
+                  python34
+                  python34-pip
+                  redhat-rpm-config
+                  sqlite
+#                  uwsgi
+                  yarn )

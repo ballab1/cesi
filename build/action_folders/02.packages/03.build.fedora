@@ -1,0 +1,7 @@
+# build Packages
+
+declare -a PKGS=( python3
+                  python3-pip
+                  sqlite
+#                  uwsgi
+                  yarn )

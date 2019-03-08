@@ -1,0 +1,11 @@
+#!/bin/bash
+
+declare -ar env_cesi=(
+    "CESI_VERSION=${CESI_VERSION:?}" 
+    'CESI_HOME="${CESI_HOME:-/usr/local/cesi}"'
+    'WORKDIR=${CESI_HOME}'
+)
+
+#remove WORKDIR so it comes after CESI
+crf.removeFromRuntimeEnvironment 'WORKDIR'
+crf.updateRuntimeEnvironment "${env_cesi[@]}" 
