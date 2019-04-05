@@ -1,0 +1,15 @@
+# cesi build-ui
+
+declare -A BUILD_UI=()
+BUILD_UI['version']=${CESI_VERSION:?}
+BUILD_UI['dir']="/tmp/cesi"
+BUILD_UI['file']="/tmp/builder-ui-${BUILD_UI['version']}-tar.gz"
+
+BUILD_UI['url_2.6.7']="https://github.com/gamegos/cesi/releases/download/v${BUILD_UI['version']}/build-ui.tar.gz"
+
+BUILD_UI['sha256_2.6.7']="38ebc59e3512dbf06b933dbc940f1c3a67bf5a52763a6bb860ae5471a70cd6b0"
+
+BUILD_UI['url']="${BUILD_UI['url_'${BUILD_UI['version']}]}"
+BUILD_UI['sha256']="${BUILD_UI['sha256_'${BUILD_UI['version']}]}"
+
+BUILD_UI['home']="${CESI_HOME:-/usr/local/cesi}"

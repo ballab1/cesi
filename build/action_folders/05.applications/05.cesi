@@ -1,9 +1,9 @@
 #!/bin/bash
 
-
 mkdir -p "${CESI_HOME}"
 cd "${CESI_HOME}"
-tar -xvf "${CESI['file']}"
+#tar -xvf "${BUILDER_UI['file']}"
+tar -xvf "${CESI_EXTENDED['file']}"
 
 
 # Create virtual environment and install requirement packages
