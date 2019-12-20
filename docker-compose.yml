@@ -32,4 +32,4 @@ services:
         environment:
             DEBUG_TRACE: ${DEBUG_TRACE:-0}
         hostname: supervisorm
-        image: ${DOCKER_REGISTRY:-ubuntu-s2:5000/}${CONTAINER_OS:-alpine}/cesi/${CESI_VERSION:-2_api}:${CONTAINER_TAG:-latest}
+        image: ${DOCKER_REGISTRY:-ubuntu-s2:5000/}${CONTAINER_OS:-alpine}/cesi/${CESI_VERSION:-2.6.8}:${CONTAINER_TAG:-latest}
