@@ -8,7 +8,7 @@ services:
         build:
             args:
                 CBF_VERSION: "${CBF_VERSION}"
-                CESI_VERSION: ${CESI_VERSION:-2_api}
+                CESI_VERSION: ${CESI_VERSION:-2.6.8}
                 CONTAINER_NAME: cesi
                 FROM_BASE: ${DOCKER_REGISTRY:-ubuntu-s2:5000/}${CONTAINER_OS:-alpine}/nginx-base/${NGINX_VERSION:-1.16.1}:${BASE_TAG:-latest} 
             cache_from:
