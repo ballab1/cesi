@@ -1,0 +1,3 @@
+location /supervisorm/ {
+    rewrite /supervisorm(/.*)$ $1 last;
+}

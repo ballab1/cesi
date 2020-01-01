@@ -9,5 +9,6 @@ declare -a PKGS=( gcc
                   python3
                   python3-dev 
                   sqlite
-#                  uwsgi
+                  uwsgi
+                  uwsgi-python3
                   yarn )

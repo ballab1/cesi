@@ -9,5 +9,6 @@ declare -a PKGS=( epel-release
                   python34-pip
                   redhat-rpm-config
                   sqlite
-#                  uwsgi
+                  uwsgi
+                  uwsgi-python3
                   yarn )

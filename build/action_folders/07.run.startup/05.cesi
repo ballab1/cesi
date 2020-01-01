@@ -3,11 +3,9 @@
 [ "${SUPERVISORD_PASS:-}" ] || lib.file_env 'SUPERVISORD_PASS'
 : ${SUPERVISORD_PASS:?"Environment variable 'SUPERVISORD_PASS' not defined in '${BASH_SOURCE[0]}'"} 
     
-cd "${CESI_HOME}"
-
 [ -z "${SUPERVISORD_PASS:-}" ] && [ "${SUPERVISORD_PASS_FILE:-}" ] lib.file_env "$SUPERVISORD_PASS"
 
-declare cfgFile="/etc/cesi/cesi.conf.toml"
+declare cfgFile="/etc/cesi/conf.toml"
 
 sed -i -r -e "s|^\s*host\s*=\s* localhost.*$|host = "'"'"$HOSTNAME"'"'"|" \
           -e "s|^\s*admin_username\s*=.+$|admin_username = "'"'"$SUPERVISORD_USER"'"'"|g" \
@@ -15,3 +13,5 @@ sed -i -r -e "s|^\s*host\s*=\s* localhost.*$|host = "'"'"$HOSTNAME"'"'"|" \
           -e "s|^\s*username\s*=.+$|username = "'"'"$SUPERVISORD_USER"'"'"|g" \
           -e "s|^\s*password\s*=.+$|password = "'"'"$SUPERVISORD_PASS"'"'"|g" \
           "$cfgFile"
+
+term.log "    user/pwd changed in ${cfgFile}"'\n' 'lt_gray'

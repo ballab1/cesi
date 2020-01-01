@@ -22,8 +22,6 @@ RUN set -o verbose \
     && /tmp/build.sh "$CONTAINER_NAME" "$DEBUG_TRACE" \
     && ([ "$DEBUG_TRACE" != 0 ] || rm -rf /tmp/*)
 
-EXPOSE 5000
-
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 #CMD ["$CONTAINER_NAME"]
 CMD ["cesi"]

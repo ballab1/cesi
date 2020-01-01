@@ -10,8 +10,8 @@ database = "sqlite:///users.db"                         # Relative path
 #database = "postgres://<user>:<password>@localhost:5432/<database_name>"
 #database = "mysql+pymysql://<user>:<password>@localhost:3306/<database_name>"
 activity_log = "/var/log/activity.log"   # File path for CeSI logs
-admin_username = "bobb"        # Username of admin user
-admin_password = "123Oleary"        # Password of admin user
+admin_username = "admin"        # Username of admin user
+admin_password = "admn"         # Password of admin user
 
 
 # This is the definition section for new supervisord node.
@@ -21,7 +21,7 @@ admin_password = "123Oleary"        # Password of admin user
 # username = "someuser" # (String) Username of the XML-RPC interface of supervisord Set nothing if no username is configured
 # password = "apass"    # (String) Password of the XML-RPC interface of supervisord. Set nothing if no username is configured
 # host = "hostname"     # (String) Host of the XML-RPC interface of supervisord
-# port = "9001"         # (String) Port of the XML-RPC interface of supervisord
+# port = 9001         # (String) Port of the XML-RPC interface of supervisord
 
 [[nodes]]
 name = "nagios"
@@ -29,15 +29,7 @@ environment = ""
 username = "bobb"
 password = "123Oleary"
 host = "nagios"
-port = "9001"
-
-[[nodes]]
-name = "nagios"
-environment = ""
-username = "bobb"
-password = "123Oleary"
-host = "nagios"
-port = "9001"
+port = 9001
 
 [[nodes]]
 name = "phpmyadmin"
@@ -45,7 +37,7 @@ environment = ""
 username = "bobb"
 password = "123Oleary"
 host = "phpmyadmin"
-port = "9001
+port = 9001
 
 [[nodes]]
 name = "zen"
@@ -53,7 +45,7 @@ environment = ""
 username = "bobb"
 password = "123Oleary"
 host = "zen"
-port = "9001"
+port = 9001
 
 [[nodes]]
 name = "hubot"
@@ -61,7 +53,7 @@ environment = ""
 username = "bobb"
 password = "123Oleary"
 host = "hubot"
-port = "9001"
+port = 9001
 
 [[nodes]]
 name = "nginx_proxy"
@@ -69,7 +61,7 @@ environment = ""
 username = "bobb"
 password = "123Oleary"
 host = "nginx"
-port = "9001"
+port = 9001
 
 [[nodes]]
 name = "cesi"
@@ -77,4 +69,4 @@ environment = ""
 username = "bobb"
 password = "123Oleary"
 host = "supervisorm"
-port = "9001"
+port = 9001
