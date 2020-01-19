@@ -3,19 +3,15 @@
 [ "${SUPERVISORD_PASS:-}" ] || lib.file_env 'SUPERVISORD_PASS'
 : ${SUPERVISORD_PASS:?"Environment variable 'SUPERVISORD_PASS' not defined in '${BASH_SOURCE[0]}'"} 
     
-cd "${CESI_HOME}"
-
 [ -z "${SUPERVISORD_PASS:-}" ] && [ "${SUPERVISORD_PASS_FILE:-}" ] lib.file_env "$SUPERVISORD_PASS"
 
-declare cesi_userinfo_db="${CESI_HOME}/userinfo.db"
-declare cfgFile="${CESI_HOME}/defaults/cesi.conf"
+declare cfgFile="/etc/cesi/conf.toml"
 
-sed -i -r -e "s|^\s*database\s*=.+$|database = $cesi_userinfo_db|" \
-          -e "s|^\s*host\s*=\s* localhost.*$|host = $HOSTNAME|" \
-          -e "s|^\s*admin_username\s*=.+$|admin_username = $SUPERVISORD_USER|g" \
-          -e "s|^\s*admin_password\s*=.+$|admin_password = $SUPERVISORD_PASS|g" \
-          -e "s|^\s*username\s*=.+$|username = $SUPERVISORD_USER|g" \
-          -e "s|^\s*password\s*=.+$|password = $SUPERVISORD_PASS|g" \
+sed -i -r -e "s|^\s*host\s*=\s* localhost.*$|host = "'"'"$HOSTNAME"'"'"|" \
+          -e "s|^\s*admin_username\s*=.+$|admin_username = "'"'"$SUPERVISORD_USER"'"'"|g" \
+          -e "s|^\s*admin_password\s*=.+$|admin_password = "'"'"$SUPERVISORD_PASS"'"'"|g" \
+          -e "s|^\s*username\s*=.+$|username = "'"'"$SUPERVISORD_USER"'"'"|g" \
+          -e "s|^\s*password\s*=.+$|password = "'"'"$SUPERVISORD_PASS"'"'"|g" \
           "$cfgFile"
 
-ln -s "$cfgFile" /etc/cesi.conf
+term.log "    user/pwd changed in ${cfgFile}"'\n' 'lt_gray'

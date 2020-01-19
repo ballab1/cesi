@@ -3,6 +3,7 @@
 declare -ar env_cesi=(
     "CESI_VERSION=${CESI_VERSION:?}" 
     'CESI_HOME="${CESI_HOME:-/usr/local/cesi}"'
+    'CESI_CONFIG_PATH=/etc/cesi/conf.toml'
     'WORKDIR=${CESI_HOME}'
 )
 

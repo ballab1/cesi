@@ -1,0 +1,72 @@
+# This is the main CeSI toml configuration file. It contains CeSI web application and
+# supervisord information to connect
+
+# This is the CeSI's own configuration.
+[cesi]
+# Database Uri
+database = "sqlite:///users.db"                         # Relative path
+# Etc
+#database = "sqlite:////opt/cesi/< version >/users.db"  # Absolute path
+#database = "postgres://<user>:<password>@localhost:5432/<database_name>"
+#database = "mysql+pymysql://<user>:<password>@localhost:3306/<database_name>"
+activity_log = "/var/log/activity.log"   # File path for CeSI logs
+admin_username = "admin"        # Username of admin user
+admin_password = "admn"         # Password of admin user
+
+
+# This is the definition section for new supervisord node.
+# [[nodes]]
+# name = "api"          # (String) Unique name for supervisord node.
+# environment = ""      # (String) The environment name provides logical grouping of supervisord nodes. It can be used as filtering option in the UI.
+# username = "someuser" # (String) Username of the XML-RPC interface of supervisord Set nothing if no username is configured
+# password = "apass"    # (String) Password of the XML-RPC interface of supervisord. Set nothing if no username is configured
+# host = "hostname"     # (String) Host of the XML-RPC interface of supervisord
+# port = 9001         # (String) Port of the XML-RPC interface of supervisord
+
+[[nodes]]
+name = "nagios"
+environment = ""
+username = "bobb"
+password = "123Oleary"
+host = "nagios"
+port = 9001
+
+[[nodes]]
+name = "phpmyadmin"
+environment = ""
+username = "bobb"
+password = "123Oleary"
+host = "phpmyadmin"
+port = 9001
+
+[[nodes]]
+name = "zen"
+environment = ""
+username = "bobb"
+password = "123Oleary"
+host = "zen"
+port = 9001
+
+[[nodes]]
+name = "hubot"
+environment = ""
+username = "bobb"
+password = "123Oleary"
+host = "hubot"
+port = 9001
+
+[[nodes]]
+name = "nginx_proxy"
+environment = ""
+username = "bobb"
+password = "123Oleary"
+host = "nginx"
+port = 9001
+
+[[nodes]]
+name = "cesi"
+environment = ""
+username = "bobb"
+password = "123Oleary"
+host = "supervisorm"
+port = 9001
