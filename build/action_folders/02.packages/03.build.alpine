@@ -1,14 +1,20 @@
 # build Packages
 
-declare -a PKGS=( gcc 
-                  make
-                  libpq
-                  libffi-dev 
-                  linux-headers
-#                  openssl-dev
+declare -a BUILD=( build-base
+                   gcc
+                   libc-dev
+                   libffi-dev
+                   linux-headers
+                   make
+                   openssl-dev
+                   postgresql-dev 
+                   python3-dev
+                  )
+
+declare -a PKGS=( libpq
+                  krb5
                   py3-pip
 #                  python3
-                  python3-dev 
                   sqlite
                   uwsgi
                   uwsgi-python3
