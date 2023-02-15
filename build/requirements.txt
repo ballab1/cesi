@@ -39,4 +39,4 @@ tomlkit          == 0.5.11
 urllib3          == 1.26.2
 uwsgi            == 2.0.19.1
 webencodings     == 0.5.1
-werkzeug         == 1.0.1
+werkzeug         == 2.2.3
