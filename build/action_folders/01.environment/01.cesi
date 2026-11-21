@@ -1,12 +1,12 @@
 #!/bin/bash
 
 declare -ar env_cesi=(
-    "CESI_VERSION=${CESI_VERSION:?}" 
+    "CESI_VERSION=${CESI_VERSION:?}"
     'CESI_HOME="${CESI_HOME:-/usr/local/cesi}"'
     'CESI_CONFIG_PATH=/etc/cesi/conf.toml'
     'WORKDIR=${CESI_HOME}'
 )
 
 #remove WORKDIR so it comes after CESI
-crf.removeFromRuntimeEnvironment 'WORKDIR'
-crf.updateRuntimeEnvironment "${env_cesi[@]}" 
+crf::removeFromRuntimeEnvironment 'WORKDIR'
+crf::updateRuntimeEnvironment "${env_cesi[@]}"
